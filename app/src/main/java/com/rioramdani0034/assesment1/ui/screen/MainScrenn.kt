@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -96,7 +97,13 @@ fun MainScreen() {
                 onBlogClick = { blog -> selectedBlog = blog },
                 modifier = Modifier.padding(innerPadding)
             )
-        }
+        }else {
+            BlogDetailScreen(
+                blog = selectedBlog!!,
+                onBack = { selectedBlog = null },
+                modifier = Modifier.padding(innerPadding)
+                )
+            }
     }
 }
 
@@ -126,6 +133,23 @@ fun BlogListScreen(blogs: List<Blog>, onBlogClick: (Blog) -> Unit, modifier: Mod
     }
 }
 
+@Composable
+fun BlogDetailScreen(blog: Blog, onBack: () -> Unit, modifier: Modifier = Modifier) {
+    Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = blog.title, style = MaterialTheme.typography.titleLarge)
+        Text(text = "By ${blog.author}", style = MaterialTheme.typography.bodyMedium)
+        Text(text = "Uploaded on: ${blog.uploadDate}", style = MaterialTheme.typography.bodySmall)
+        Text(text = "Category: ${blog.category}", style = MaterialTheme.typography.bodySmall)
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = blog.content, style = MaterialTheme.typography.bodyMedium)
+
+        Spacer(modifier = Modifier.height(24.dp))
+        Button(onClick = onBack) {
+            Text("Paham")
+            }
+        }
+}
 @Preview(showBackground = true)
 @Composable
 fun MainScreenPreview() {
