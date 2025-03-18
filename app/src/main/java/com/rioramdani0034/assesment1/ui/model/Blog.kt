@@ -6,7 +6,7 @@ data class Blog(
     val content: String,
     val author: String,
     val category: String,
-    val uploadDate: String
+    val uploadDate: String,
 )
 
 val blogList = listOf(
