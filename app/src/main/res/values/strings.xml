@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">assesment1</string>
+    <string name="app_name">Assesment1</string>
+
+    <!--String About-->
+    <string name="back">Back</string>
+    <string name="about_app">Helo</string>
+    <string name="copyright">Helo</string>
 </resources>
