@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MindScribe</string>
+    <string name="got_it">Paham</string>
+    <string name="upload_date">Diunggah pada</string>
+    <string name="back">Kembali</string>
+    <string name="about_app">Tentang Aplikasi</string>
+    <string name="copyright">MindScribe adalah aplikasi blog pribadi yang dirancang untuk membantu Anda menuangkan pikiran, ide,
+        dan cerita secara bebas dalam satu ruang digital yang nyaman. Dengan desain minimalis yang berbasis Jetpack Compose, aplikasi ini
+        menawarkan pengalaman menulis yang bersih dan intuitif yang mendukung kreativitas Anda tanpa gangguan.
+        \n\n🖋️ Private Notion Semua tulisan Anda disimpan secara lokal dengan privasi terjaga, sehingga Anda bebas menulis tanpa khawatir.
+        \n\n Hak Cipta © 2024-2025 Rio Ramdani. Semua hak dilindungi undang-undang.</string>
+    <string name="submit">Kirim</string>
+    <string name="reset">Mengatur ulang</string>
+    <string name="input_invalid">Tidak bisa kosong</string>
+    <string name="add_blog">Tambah Blog Baru</string>
+    <string name="title">Judul</string>
+    <string name="content">Konten</string>
+    <string name="author">Pengarang</string>
+    <string name="category">Kategori</string>
+    <string name="date">Tanggal Unggah (yyyy-mm-dd)</string>
+    <string name="share">Bagikan</string>
+    <string name="share_template">Judul: %1$s\\nKonten: %2$s\\nPengarang: %3$s\\nKategori: %4$s\\nTanggal Unggah: %5$s</string>
+</resources>
