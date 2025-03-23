@@ -26,4 +26,11 @@
     <string name="author">Author</string>
     <string name="category">Category</string>
     <string name="date">Upload Date (yyyy-mm-dd)</string>
+
+    <!--String Share Blog-->
+    <string name="share">Share</string>
+    <string name="share_template">
+    Title: %1$s\nContent: %2$s\nAuthor: %3$s\nCategory: %4$s\nUpload Date: %5$s</string>
+
+
 </resources>

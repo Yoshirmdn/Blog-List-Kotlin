@@ -1,9 +1,13 @@
 package com.rioramdani0034.assesment1.ui.screen
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -41,6 +45,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -178,6 +183,7 @@ fun BlogListScreen(
 
 @Composable
 fun BlogDetailScreen(blog: Blog, onBack: () -> Unit, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = blog.title, style = MaterialTheme.typography.titleLarge)
@@ -188,11 +194,54 @@ fun BlogDetailScreen(blog: Blog, onBack: () -> Unit, modifier: Modifier = Modifi
         Text(text = blog.content, style = MaterialTheme.typography.bodyMedium)
 
         Spacer(modifier = Modifier.height(24.dp))
-        Button(onClick = onBack) {
-            Text(text = stringResource(R.string.got_it))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Button(
+                onClick = onBack,
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(text = stringResource(R.string.got_it))
+            }
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            Button(
+                onClick = {
+                    shareData(
+                        context = context,
+                        message = context.getString(
+                            R.string.share_template,
+                            blog.title,
+                            blog.content,
+                            blog.author,
+                            blog.category,
+                            blog.uploadDate
+                        ).uppercase()
+                    )
+                },
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(text = stringResource(R.string.share))
             }
         }
+
+    }
 }
+
+private fun shareData(context: Context, message : String){
+    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_TEXT, message)
+    }
+    if (shareIntent.resolveActivity(context.packageManager)!= null){
+        context.startActivity(shareIntent)
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun MainScreenPreview() {
