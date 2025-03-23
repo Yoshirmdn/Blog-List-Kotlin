@@ -1,8 +1,21 @@
 <resources>
-    <string name="app_name">Assesment1</string>
-
+    <string name="app_name">MindScribe</string>
+    <!--String Main-->
+    <string name="got_it">Got it</string>
     <!--String About-->
     <string name="back">Back</string>
-    <string name="about_app">Helo</string>
-    <string name="copyright">Helo</string>
+    <string name="about_app">About App</string>
+    <string name="copyright">MindScribe is a personal blogging app
+        designed to help you freely pour out your thoughts, ideas,
+        and stories in one convenient digital space. With a minimalist
+        design based on Jetpack Compose, this app offers a clean,
+        intuitive writing experience that supports your creativity
+        without distractions.\n\n🖋️ Private Notion
+        All your writing is stored locally with privacy maintained,
+        so you are free to write without worry.\n\n
+        Copyright © 2024-2025 Rio Ramdani. All rights reserved.</string>
+    <!--String Add Blog-->
+    <string name="submit">Submit</string>
+    <string name="reset">Reset</string>
+    <string name="input_invalid">Cannot be empty</string>
 </resources>
