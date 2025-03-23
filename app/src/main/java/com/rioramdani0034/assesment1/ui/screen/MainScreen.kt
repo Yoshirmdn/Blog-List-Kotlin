@@ -165,9 +165,9 @@ fun BlogListScreen(
                             .padding(16.dp)
                     ) {
                         Text(text = blog.title, style = MaterialTheme.typography.titleLarge)
-                        Text(text = "By ${blog.author}", style = MaterialTheme.typography.bodyMedium)
-                        Text(text = "Uploaded on: ${blog.uploadDate}", style = MaterialTheme.typography.bodySmall)
-                        Text(text = "Category: ${blog.category}", style = MaterialTheme.typography.bodySmall)
+                        Text(text = "${stringResource(R.string.author)}: ${blog.author}", style = MaterialTheme.typography.bodyMedium)
+                        Text(text = "${stringResource(R.string.upload_date)}: ${blog.uploadDate}", style = MaterialTheme.typography.bodySmall)
+                        Text(text = "${stringResource(R.string.category)}: ${blog.category}", style = MaterialTheme.typography.bodySmall)
                     }
                 }
             }
@@ -181,9 +181,9 @@ fun BlogDetailScreen(blog: Blog, onBack: () -> Unit, modifier: Modifier = Modifi
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = blog.title, style = MaterialTheme.typography.titleLarge)
-        Text(text = "By ${blog.author}", style = MaterialTheme.typography.bodyMedium)
-        Text(text = "Uploaded on: ${blog.uploadDate}", style = MaterialTheme.typography.bodySmall)
-        Text(text = "Category: ${blog.category}", style = MaterialTheme.typography.bodySmall)
+        Text(text = "${stringResource(R.string.author)}: ${blog.author}", style = MaterialTheme.typography.bodyMedium)
+        Text(text = "${stringResource(R.string.upload_date)}: ${blog.uploadDate}", style = MaterialTheme.typography.bodySmall)
+        Text(text = "${stringResource(R.string.category)}: ${blog.category}", style = MaterialTheme.typography.bodySmall)
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = blog.content, style = MaterialTheme.typography.bodyMedium)
 

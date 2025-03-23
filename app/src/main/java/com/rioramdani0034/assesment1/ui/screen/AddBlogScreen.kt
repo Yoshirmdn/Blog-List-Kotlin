@@ -39,7 +39,7 @@ fun AddBlogScreen(navController: NavHostController ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Tambah Blog Baru") },
+                title = { Text(text = stringResource(R.string.add_blog)) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
@@ -60,7 +60,7 @@ fun AddBlogScreen(navController: NavHostController ) {
             OutlinedTextField(
                 value = title,
                 onValueChange = { title = it },
-                label = { Text("Judul") },
+                label = { Text(text = stringResource(R.string.title)) },
                 supportingText = { ErrorHint(titleError) },
                 isError = titleError,
                 singleLine = true,
@@ -75,7 +75,7 @@ fun AddBlogScreen(navController: NavHostController ) {
             OutlinedTextField(
                 value = content,
                 onValueChange = { content = it },
-                label = { Text("Konten") },
+                label = { Text(text = stringResource(R.string.content)) },
                 supportingText = { ErrorHint(contentError) },
                 isError = contentError,
                 keyboardOptions = KeyboardOptions(
@@ -89,7 +89,7 @@ fun AddBlogScreen(navController: NavHostController ) {
             OutlinedTextField(
                 value = author,
                 onValueChange = { author = it },
-                label = { Text("Penulis") },
+                label = { Text(text = stringResource(R.string.author)) },
                 supportingText = { ErrorHint(authorError) },
                 isError = authorError,
                 singleLine = true,
@@ -109,7 +109,7 @@ fun AddBlogScreen(navController: NavHostController ) {
                     value = selectedCategory,
                     onValueChange = { selectedCategory = it },
                     readOnly = true,
-                    label = { Text("Kategori") },
+                    label = { Text(text = stringResource(R.string.category)) },
                     supportingText = { ErrorHint(categoryError) },
                     isError = categoryError,
                     trailingIcon = {
@@ -138,7 +138,7 @@ fun AddBlogScreen(navController: NavHostController ) {
             OutlinedTextField(
                 value = uploadDate,
                 onValueChange = { uploadDate = it },
-                label = { Text("Tanggal Unggah (yyyy-mm-dd)") },
+                label = { Text(text = stringResource(R.string.date)) },
                 supportingText = { ErrorHint(uploadDateError) },
                 isError = uploadDateError,
                 keyboardOptions = KeyboardOptions(
