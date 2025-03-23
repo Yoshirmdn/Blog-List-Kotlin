@@ -2,6 +2,7 @@ package com.rioramdani0034.assesment1.ui.screen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
@@ -30,13 +32,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.rioramdani0034.assesment1.R
 import com.rioramdani0034.assesment1.navigation.Screen
 import com.rioramdani0034.assesment1.ui.model.Blog
 import com.rioramdani0034.assesment1.ui.model.blogList
@@ -82,6 +87,14 @@ fun MainScreen(navController: NavHostController) {
                 },
                 actions = {
                     IconButton(onClick = {
+                        navController.navigate(Screen.AddBlog.route)
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.Add,
+                            contentDescription = "Tambah Blog"
+                        )
+                    }
+                    IconButton(onClick = {
                         navController.navigate(Screen.About.route)
                     }) {
                         Icon(
@@ -97,7 +110,6 @@ fun MainScreen(navController: NavHostController) {
         // Menampilkan BlogListScreen atau BlogDetailScreen berdasarkan selectedBlog
         if (selectedBlog == null) {
             BlogListScreen(
-                // Menggunakan blogList yang didefinisikan di Blog.kt
                 blogs = blogList,
                 onBlogClick = { blog -> selectedBlog = blog },
                 modifier = Modifier.padding(innerPadding)
@@ -113,7 +125,11 @@ fun MainScreen(navController: NavHostController) {
 }
 
 @Composable
-fun BlogListScreen(blogs: List<Blog>, onBlogClick: (Blog) -> Unit, modifier: Modifier = Modifier) {
+fun BlogListScreen(
+    blogs: MutableList<Blog>,
+    onBlogClick: (Blog) -> Unit,
+    modifier: Modifier = Modifier
+) {
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         contentPadding = androidx.compose.foundation.layout.PaddingValues(16.dp)
@@ -126,17 +142,24 @@ fun BlogListScreen(blogs: List<Blog>, onBlogClick: (Blog) -> Unit, modifier: Mod
                     .clickable { onBlogClick(blog) },
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = blog.title, style = MaterialTheme.typography.titleLarge)
-                    Text(text = "By ${blog.author}", style = MaterialTheme.typography.bodyMedium)
-                    Text(text = "Uploaded on: ${blog.uploadDate}", style = MaterialTheme.typography.bodySmall)
-                    Text(text = "Category: ${blog.category}", style = MaterialTheme.typography.bodySmall)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(text = blog.title, style = MaterialTheme.typography.titleLarge)
+                        Text(text = "By ${blog.author}", style = MaterialTheme.typography.bodyMedium)
+                        Text(text = "Uploaded on: ${blog.uploadDate}", style = MaterialTheme.typography.bodySmall)
+                        Text(text = "Category: ${blog.category}", style = MaterialTheme.typography.bodySmall)
+                    }
                 }
             }
         }
     }
 }
+
 
 @Composable
 fun BlogDetailScreen(blog: Blog, onBack: () -> Unit, modifier: Modifier = Modifier) {
@@ -151,7 +174,7 @@ fun BlogDetailScreen(blog: Blog, onBack: () -> Unit, modifier: Modifier = Modifi
 
         Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = onBack) {
-            Text("Paham")
+            Text(text = stringResource(R.string.got_it))
             }
         }
 }
