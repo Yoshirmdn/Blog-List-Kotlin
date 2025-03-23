@@ -35,13 +35,16 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.rioramdani0034.assesment1.navigation.Screen
 import com.rioramdani0034.assesment1.ui.model.Blog
 import com.rioramdani0034.assesment1.ui.model.blogList
 import com.rioramdani0034.assesment1.ui.theme.Assesment1Theme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavHostController) {
     var selectedBlog by remember { mutableStateOf<Blog?>(null) }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
@@ -78,7 +81,9 @@ fun MainScreen() {
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* do something */ }) {
+                    IconButton(onClick = {
+                        navController.navigate(Screen.About.route)
+                    }) {
                         Icon(
                             imageVector = Icons.Filled.Info,
                             contentDescription = "Info"
@@ -154,6 +159,6 @@ fun BlogDetailScreen(blog: Blog, onBack: () -> Unit, modifier: Modifier = Modifi
 @Composable
 fun MainScreenPreview() {
     Assesment1Theme {
-        MainScreen()
+        MainScreen(rememberNavController())
     }
 }
